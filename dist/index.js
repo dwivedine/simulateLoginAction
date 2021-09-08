@@ -42,9 +42,10 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const path = process.cwd();
-            python_shell_1.PythonShell.run(__nccwpck_require__.ab + "test.py", undefined, function (err) {
+            const val = python_shell_1.PythonShell.run(__nccwpck_require__.ab + "test.py", undefined, function (err) {
                 if (err)
                     throw err;
+                core.setOutput('url', val);
                 core.debug('successful');
             });
             const ms = core.getInput('milliseconds');

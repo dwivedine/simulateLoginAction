@@ -5,10 +5,15 @@ import {PythonShell} from 'python-shell'
 async function run(): Promise<void> {
   try {
     const path = process.cwd()
-    PythonShell.run(`${path}/src/test.py`, undefined, function (err) {
-      if (err) throw err
-      core.debug('successful')
-    })
+    const val = PythonShell.run(
+      `${path}/src/test.py`,
+      undefined,
+      function (err) {
+        if (err) throw err
+        core.setOutput('url', val)
+        core.debug('successful')
+      }
+    )
     const ms: string = core.getInput('milliseconds')
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
 
