@@ -4,7 +4,8 @@ import {PythonShell} from 'python-shell'
 
 async function run(): Promise<void> {
   try {
-    PythonShell.run('src/test.py', undefined, function (err) {
+    const path = process.cwd()
+    PythonShell.run(`${path}/src/test.py`, undefined, function (err) {
       if (err) throw err
       core.debug('successful')
     })

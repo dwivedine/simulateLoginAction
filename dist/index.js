@@ -41,7 +41,8 @@ const python_shell_1 = __nccwpck_require__(823);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            python_shell_1.PythonShell.run('src/test.py', undefined, function (err) {
+            const path = process.cwd();
+            python_shell_1.PythonShell.run(__nccwpck_require__.ab + "test.py", undefined, function (err) {
                 if (err)
                     throw err;
                 core.debug('successful');
