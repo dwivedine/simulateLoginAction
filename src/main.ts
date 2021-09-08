@@ -1,8 +1,13 @@
 import * as core from '@actions/core'
 import {wait} from './wait'
+import {PythonShell} from 'python-shell'
 
 async function run(): Promise<void> {
   try {
+    PythonShell.run('src/test.py', undefined, function (err) {
+      if (err) throw err
+      core.debug('successful')
+    })
     const ms: string = core.getInput('milliseconds')
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
 
