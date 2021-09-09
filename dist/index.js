@@ -42,12 +42,14 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const path = process.cwd();
-            const val = python_shell_1.PythonShell.run(__nccwpck_require__.ab + "test.py", undefined, function (err) {
-                if (err)
-                    throw err;
-                core.setOutput('url', val);
-                core.debug('successful');
+            const result = yield new Promise((resolve, reject) => {
+                python_shell_1.PythonShell.run(__nccwpck_require__.ab + "test.py", undefined, (err, results) => {
+                    if (err)
+                        return reject(err);
+                    return resolve(results);
+                });
             });
+            core.setOutput('url', result);
             const ms = core.getInput('milliseconds');
             core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
             core.debug(new Date().toTimeString());
