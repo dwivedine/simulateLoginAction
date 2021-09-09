@@ -4,5 +4,5 @@ token  = subprocess.check_output('echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN', shell=T
 #print("token is", token)
 
 url = subprocess.check_output('echo $ACTIONS_ID_TOKEN_REQUEST_URL', shell=True)
-print(os.getenv('LOGNAME'))
+print(os.environ)
 #os.environ['ACTIONS_ID_TOKEN_REQUEST_URL']

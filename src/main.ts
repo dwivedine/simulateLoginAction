@@ -14,6 +14,7 @@ async function run(): Promise<void> {
       })
     })
     core.setOutput('url', result)
+    core.debug(`url value is ${result}`)
     const ms: string = core.getInput('milliseconds')
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
 

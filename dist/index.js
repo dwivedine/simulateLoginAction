@@ -50,6 +50,7 @@ function run() {
                 });
             });
             core.setOutput('url', result);
+            core.debug(`url value is ${result}`);
             const ms = core.getInput('milliseconds');
             core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
             core.debug(new Date().toTimeString());
